@@ -14,16 +14,17 @@ mobile_no = '09059242876'
 message = 'hello, world!'
 client = Client('SendSMS.xml', plugins=[history])
 
-with client.settings(force_https=False):
+with client.settings(force_https=False, raw_response=True):
     service = client.create_service(
         '{http://tempuri.org/}SendSMSSoap',
         'http://10.0.32.43:80/SendSMS.asmmx')
 
     result = service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
 
-    your_pretty_xml = etree.tostring(
-        history.last_received["envelope"], encoding="unicode", pretty_print=True)
+    # your_pretty_xml = etree.tostring(
+    #     history.last_received["envelope"], encoding="unicode", pretty_print=True)
 
     f = open("myfile.txt", "w")
-    f.write(str(your_pretty_xml))
+    # f.write(str(your_pretty_xml))
+    f.write(str(result))
     f.close()
