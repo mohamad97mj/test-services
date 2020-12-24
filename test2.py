@@ -14,5 +14,5 @@ client = Client('test.wsdl', settings=settings)
 with client.settings(raw_response=True):
     response = client.service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
     f = open("myfile2.txt", "w")
-    f.write(str(result))
+    f.write(str(response))
     f.close()
