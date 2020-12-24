@@ -19,7 +19,7 @@ with client.settings(force_https=False):
         '{http://tempuri.org/}SendSMSSoap',
         'https://10.0.32.43:80/SendSMS')
 
-    result = client.service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
+    result = service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
 
     your_pretty_xml = etree.tostring(
         history.last_received["envelope"], encoding="unicode", pretty_print=True)
