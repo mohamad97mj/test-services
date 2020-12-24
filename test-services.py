@@ -17,7 +17,7 @@ client = Client('SendSMS.xml', plugins=[history])
 with client.settings(force_https=False):
     service = client.create_service(
         '{http://tempuri.org/}SendSMSSoap',
-        'https://10.0.32.43:80/SendSMS.asmmx')
+        'http://10.0.32.43:80/SendSMS.asmmx')
 
     result = service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
 
