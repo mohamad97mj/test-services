@@ -9,9 +9,8 @@ class SMSGateway(Enum):
 
 mobile_no = '09059242876'
 message = 'hello, world!'
-settings = Settings(strict=False, force_https=False, xml_huge_tree=True)
 client = Client('test.wsdl', settings=settings)
-with client.settings(raw_response=True):
+with client.settings():
     response = client.service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
     f = open("myfile2.txt", "w")
     f.write(str(response))

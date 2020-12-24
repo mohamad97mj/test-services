@@ -12,14 +12,11 @@ class SMSGateway(Enum):
 history = HistoryPlugin()
 mobile_no = '09059242876'
 message = 'hello, world!'
-client = Client('SendSMS.xml', plugins=[history])
+client = Client('test.wsdl', plugins=[history])
 
 with client.settings(force_https=False, raw_response=True):
-    service = client.create_service(
-        '{http://tempuri.org/}SendSMSSoap',
-        'http://10.0.32.43:80/SendSMS.asmx')
 
-    result = service.SendSMS(mobile_no, message, SMSGateway.ADVERTISEMENT, "Mojahed sms service")
+    result = client.service.SendSMS(mobile_no, message, 1, "Mojahed sms service")
 
     # your_pretty_xml = etree.tostring(
     #     history.last_received["envelope"], encoding="unicode", pretty_print=True)
